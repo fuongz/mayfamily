@@ -1,4 +1,4 @@
-import { Container, Flex, Image, Text, Title } from '@mantine/core'
+import { Container, Group, Image, Text, Title } from '@mantine/core'
 import classes from './styles.module.css'
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
       <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title order={1} fz={48} c="bright">
+            <Title order={1} fz={{ base: 32, sm: 48 }} c="bright">
               Coming soon!
             </Title>
 
@@ -16,9 +16,10 @@ export default function Home() {
               Trang web của tụi mình đang trong quá trình hoàn thiện, chờ tụi mình thêm chút thời gian nha!
             </Text>
 
-            <Flex justify="center">
+            <Group justify="center" align="flex-start" gap="xl">
               <Image style={{ borderRadius: '8px' }} mt="xl" w={500} src="https://media.tenor.com/7pyDepP8SOQAAAAM/cat-wif.gif" alt="gif" />
-            </Flex>
+              <Image style={{ borderRadius: '8px' }} mt="xl" w={500} src="https://media.tenor.com/GZDrcsyYnQIAAAAM/locuraaa.gif" alt="gif" />
+            </Group>
           </div>
         </div>
       </Container>
