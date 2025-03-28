@@ -1,22 +1,31 @@
 'use client'
 
-import { createTheme, MantineProvider } from '@mantine/core'
-import { Cabin, Playwrite_VN } from 'next/font/google'
+import { Button, createTheme, Input, MantineProvider } from '@mantine/core'
+import { Bricolage_Grotesque } from 'next/font/google'
 
-const headingMono = Playwrite_VN({
-  weight: ['400'],
-})
-
-const fontSans = Cabin({
+const fontSans = Bricolage_Grotesque({
   variable: '--font-sans',
   subsets: ['vietnamese'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 const theme = createTheme({
   fontFamily: fontSans.style.fontFamily,
-  headings: {
-    fontFamily: headingMono.style.fontFamily,
+  defaultRadius: 'md',
+  primaryColor: 'red',
+  components: {
+    Button: Button.extend({
+      styles: {
+        label: {
+          textShadow: '0 1px 1.5px #00000029',
+        },
+      },
+      defaultProps: {
+        variant: 'gradient',
+        gradient: { from: 'red.8', to: 'red.5', deg: 0 },
+      },
+    }),
+    Input: Input.extend({}),
   },
 })
 
