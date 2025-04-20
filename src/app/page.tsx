@@ -1,7 +1,7 @@
 'use client'
 
-import Preview from '@/components/motions/pallarax-floating/test'
+import { FullScreenScrolling } from '@/components/animations/full-screen-scrolling/FullScreenScrolling'
 
 export default function Home() {
-  return <Preview />
+  return <FullScreenScrolling />
 }

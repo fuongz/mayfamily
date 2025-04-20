@@ -4,11 +4,18 @@ import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core'
 import './globals.css'
 import '@mantine/core/styles.css'
 import Providers from './providers'
+import { League_Gothic } from 'next/font/google'
 
 export const metadata: Metadata = {
   title: 'Trinh & Phương',
   description: 'Trang web gia đình bé nhỏ của chúng mình!',
 }
+
+const fontTitle = League_Gothic({
+  variable: '--font-title',
+  subsets: ['vietnamese'],
+  weight: ['400'],
+})
 
 export default function RootLayout({
   children,
@@ -26,7 +33,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Trinh & Phuong" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body>
+      <body className={fontTitle.variable}>
         <Providers>{children}</Providers>
       </body>
     </html>

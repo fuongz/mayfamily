@@ -1,18 +1,30 @@
 'use client'
 
 import { Button, createTheme, Input, MantineProvider } from '@mantine/core'
-import { Bricolage_Grotesque } from 'next/font/google'
+import { Style_Script, Lora } from 'next/font/google'
 
-const fontSans = Bricolage_Grotesque({
+const fontHeading = Style_Script({
+  variable: '--font-heading',
+  subsets: ['vietnamese'],
+  weight: ['400'],
+})
+
+const fontSans = Lora({
   variable: '--font-sans',
   subsets: ['vietnamese'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
 })
 
 const theme = createTheme({
   fontFamily: fontSans.style.fontFamily,
+  headings: {
+    fontFamily: fontHeading.style.fontFamily,
+  },
+  colors: {
+    'wedding-red': ['#ffebeb', '#f9d2d2', '#f89f9f', '#f86a6a', '#f9413d', '#f92b22', '#fa2115', '#df180b', '#c70f07', '#ad0002'],
+  },
   defaultRadius: 'md',
-  primaryColor: 'red',
+  primaryColor: 'wedding-red',
   components: {
     Button: Button.extend({
       styles: {
