@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 3111",
+    "dev": "next dev --experimental-https --port 3111 ",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,11 +16,14 @@
     "@mantine/hooks": "^7.17.2",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
+    "framer-motion": "^12.8.0",
     "gsap": "^3.12.7",
     "motion": "^12.5.0",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-mega-scroll": "^1.0.19",
+    "react-use-measure": "^2.1.7",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
