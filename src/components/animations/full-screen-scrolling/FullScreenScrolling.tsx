@@ -24,42 +24,40 @@ function FullScreenScrolling() {
           )}
         </Transition>
 
-        <FullScreenScroll>
-          <Box id="section-0" className={`${styles.panel} panel1`}>
+        <Box id="section-0" className={`${styles.panel} panel1`}>
+          <div className="content relative w-full h-screen flex flex-col items-center justify-center">
+            <Landing />
+          </div>
+        </Box>
+
+        {!matches && (
+          <Box id="section-1" hiddenFrom="sm" className={`${styles.panel} panel2`}>
             <div className="content relative w-full h-screen flex flex-col items-center justify-center">
-              <Landing />
+              <Quote />
             </div>
           </Box>
+        )}
 
-          {!matches && (
-            <Box id="section-1" hiddenFrom="sm" className={`${styles.panel} panel2`}>
-              <div className="content relative w-full h-screen flex flex-col items-center justify-center">
-                <Quote />
-              </div>
-            </Box>
-          )}
-
-          {!matches && (
-            <Box id="section-2" hiddenFrom="sm" className={`${styles.panel} panel3`}>
-              <div className="content relative w-full h-screen">
-                <Introduce />
-              </div>
-            </Box>
-          )}
-          {!matches && (
-            <Box id="section-3" hiddenFrom="sm" className={`${styles.panel} panel4`}>
-              <div className="content relative w-full">
-                <Gallery />
-              </div>
-            </Box>
-          )}
-
-          <Box id="section-4" className={`${styles.panel} panel5`}>
+        {!matches && (
+          <Box id="section-2" hiddenFrom="sm" className={`${styles.panel} panel3`}>
             <div className="content relative w-full h-screen">
-              <InvitationEnvelope />
+              <Introduce />
             </div>
           </Box>
-        </FullScreenScroll>
+        )}
+        {!matches && (
+          <Box id="section-3" hiddenFrom="sm" className={`${styles.panel} panel4`}>
+            <div className="content relative w-full">
+              <Gallery />
+            </div>
+          </Box>
+        )}
+
+        <Box id="section-4" className={`${styles.panel} panel5`}>
+          <div className="content relative w-full h-screen">
+            <InvitationEnvelope />
+          </div>
+        </Box>
 
         <Transition mounted={mounted} transition="fade-down" duration={700} timingFunction="ease">
           {(transitionStyles) => (
