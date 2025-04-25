@@ -5,11 +5,14 @@ import { Introduce } from '@/components/features/introduce/Introduce'
 import { Quote } from '@/components/features/quote/Quote'
 import { Landing } from '@/components/features/landing/Landing'
 import { Box, Image, Transition } from '@mantine/core'
-import { useMounted } from '@mantine/hooks'
+import { useMediaQuery, useMounted } from '@mantine/hooks'
+import { Gallery } from '@/components/features/gallery/Gallery'
+import FullScreenScroll from '../full-screen-scroll/FullScreenScroll'
 
 function FullScreenScrolling() {
   const mounted = useMounted()
   const container = useRef<HTMLDivElement | null>(null)
+  const matches = useMediaQuery('(min-width: 56.25em)')
   return (
     <div className="overflow-hidden" ref={container}>
       <Box>
@@ -21,29 +24,42 @@ function FullScreenScrolling() {
           )}
         </Transition>
 
-        <Box id="section-0" className={`${styles.panel} panel1`}>
-          <div className="content relative w-full h-screen flex flex-col items-center justify-center">
-            <Landing />
-          </div>
-        </Box>
+        <FullScreenScroll>
+          <Box id="section-0" className={`${styles.panel} panel1`}>
+            <div className="content relative w-full h-screen flex flex-col items-center justify-center">
+              <Landing />
+            </div>
+          </Box>
 
-        <Box id="section-1" hiddenFrom="sm" className={`${styles.panel} panel2`}>
-          <div className="content relative w-full h-screen flex flex-col items-center justify-center">
-            <Quote />
-          </div>
-        </Box>
+          {!matches && (
+            <Box id="section-1" hiddenFrom="sm" className={`${styles.panel} panel2`}>
+              <div className="content relative w-full h-screen flex flex-col items-center justify-center">
+                <Quote />
+              </div>
+            </Box>
+          )}
 
-        <Box id="section-2" hiddenFrom="sm" className={`${styles.panel} panel3`}>
-          <div className="content relative w-full h-screen">
-            <Introduce />
-          </div>
-        </Box>
+          {!matches && (
+            <Box id="section-2" hiddenFrom="sm" className={`${styles.panel} panel3`}>
+              <div className="content relative w-full h-screen">
+                <Introduce />
+              </div>
+            </Box>
+          )}
+          {!matches && (
+            <Box id="section-3" hiddenFrom="sm" className={`${styles.panel} panel4`}>
+              <div className="content relative w-full">
+                <Gallery />
+              </div>
+            </Box>
+          )}
 
-        <Box id="section-3" className={`${styles.panel} panel4`}>
-          <div className="content relative w-full h-screen">
-            <InvitationEnvelope />
-          </div>
-        </Box>
+          <Box id="section-4" className={`${styles.panel} panel5`}>
+            <div className="content relative w-full h-screen">
+              <InvitationEnvelope />
+            </div>
+          </Box>
+        </FullScreenScroll>
 
         <Transition mounted={mounted} transition="fade-down" duration={700} timingFunction="ease">
           {(transitionStyles) => (

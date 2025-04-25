@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core'
 
 import './globals.css'
+
 import '@mantine/core/styles.css'
+import '@mantine/carousel/styles.css'
+
 import Providers from './providers'
 import { League_Gothic } from 'next/font/google'
 
