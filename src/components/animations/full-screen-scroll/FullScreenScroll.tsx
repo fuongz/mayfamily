@@ -51,7 +51,6 @@ export function FullScreenScroll({ children, className, showDots = true, dotsPos
     const currentTouch = e.touches[0].clientY
     const diff = touchStart - currentTouch
     const container = containerRef.current
-    const sectionHeight = container.clientHeight
 
     // Prevent default only if we're at the top or bottom of a section
     const isAtTop = container.scrollTop === 0
