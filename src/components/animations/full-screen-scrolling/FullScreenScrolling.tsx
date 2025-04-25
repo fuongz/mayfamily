@@ -7,7 +7,6 @@ import { Landing } from '@/components/features/landing/Landing'
 import { Box, Image, Transition } from '@mantine/core'
 import { useMediaQuery, useMounted } from '@mantine/hooks'
 import { Gallery } from '@/components/features/gallery/Gallery'
-import FullScreenScroll from '../full-screen-scroll/FullScreenScroll'
 
 function FullScreenScrolling() {
   const mounted = useMounted()
