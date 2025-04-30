@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { FullScreenScrolling } from '@/components/animations/full-screen-scrolling/FullScreenScrolling'
+import { Home } from "@/components/features/home";
 
-export default function Home() {
-  return <FullScreenScrolling />
+export default function HomePage() {
+  return <Home />;
 }
