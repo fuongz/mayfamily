@@ -1,0 +1,14 @@
+.wrapper {
+  max-height: 100dvh;
+  width: 100dvw;
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.panel {
+  height: 100dvh;
+  width: 100dvw;
+  scroll-snap-align: start;
+  overflow: hidden;
+}

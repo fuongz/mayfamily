@@ -3,7 +3,7 @@ import { Box, Flex, Image, Text, Title } from "@mantine/core";
 
 function Landing() {
   return (
-    <Box>
+    <Flex justify="center" align="center" h="100%">
       <InView
         variants={{
           hidden: {
@@ -15,7 +15,7 @@ function Landing() {
         }}
         transition={{ duration: 2, ease: "easeInOut" }}
       >
-        <Box>
+        <Box ta="center">
           <Text
             c="wedding-red.9"
             ff="var(--font-title)"
@@ -57,7 +57,7 @@ function Landing() {
           </Text>
         </Box>
       </InView>
-    </Box>
+    </Flex>
   );
 }
 

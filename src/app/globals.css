@@ -1,14 +1,1 @@
 @import "tailwindcss";
-
-@theme {
-  --color-wedding-50: #ffebeb;
-  --color-wedding-100: #f9d2d2;
-  --color-wedding-200: #f89f9f;
-  --color-wedding-300: #f86a6a;
-  --color-wedding-400: #f9413d;
-  --color-wedding-500: #f92b22;
-  --color-wedding-600: #fa2115;
-  --color-wedding-700: #df180b;
-  --color-wedding-800: #c70f07;
-  --color-wedding-900: #ad0002;
-}

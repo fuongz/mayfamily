@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import styles from "./Home.module.css";
 import { InvitationEnvelope } from "@/components/features/invitation-envelope/InvitationEnvelope";
 import { Introduce } from "@/components/features/introduce/Introduce";
 import { Quote } from "@/components/features/quote/Quote";
@@ -14,7 +13,7 @@ function Home() {
   const container = useRef<HTMLDivElement | null>(null);
   const matches = useMediaQuery("(min-width: 56.25em)");
   return (
-    <div className="overflow-hidden" ref={container}>
+    <div ref={container}>
       <Box>
         <Transition
           mounted={mounted}
@@ -27,7 +26,7 @@ function Home() {
               style={transitionStyles}
               hiddenFrom="sm"
               pos="fixed"
-              w="100%"
+              w="100wh"
               top={0}
               left={0}
             >
@@ -41,53 +40,11 @@ function Home() {
         </Transition>
 
         <FullScreenScroll>
-          <Box id="section-0" className={`${styles.panel} panel1`}>
-            <div className="content relative flex flex-col items-center justify-center">
-              <Landing />
-            </div>
-          </Box>
-
-          {!matches && (
-            <Box
-              id="section-1"
-              hiddenFrom="sm"
-              className={`${styles.panel} panel2`}
-            >
-              <div className="content relative flex flex-col items-center justify-center">
-                <Quote />
-              </div>
-            </Box>
-          )}
-
-          {!matches && (
-            <Box
-              id="section-2"
-              hiddenFrom="sm"
-              className={`${styles.panel} panel3`}
-            >
-              <div className="content relative w-full h-dvh">
-                <Introduce />
-              </div>
-            </Box>
-          )}
-
-          {!matches && (
-            <Box
-              id="section-3"
-              hiddenFrom="sm"
-              className={`${styles.panel} panel4`}
-            >
-              <div className="content relative w-full">
-                <Gallery />
-              </div>
-            </Box>
-          )}
-
-          <Box id="section-4" className={`${styles.panel} panel5`}>
-            <div className="content relative w-full h-dvh">
-              <InvitationEnvelope />
-            </div>
-          </Box>
+          <Landing />
+          {!matches && <Quote />}
+          {!matches && <Introduce />}
+          {!matches && <Gallery />}
+          <InvitationEnvelope />
         </FullScreenScroll>
 
         <Transition
