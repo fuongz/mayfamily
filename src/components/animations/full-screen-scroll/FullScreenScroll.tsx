@@ -25,7 +25,7 @@ export function FullScreenScroll({ children, className }: Props) {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <div ref={containerRef} className={`${cn(className)} ${styles.wrapper}`}>
         {sections.map((section, index) => (
           <div key={index} className={styles.panel}>
