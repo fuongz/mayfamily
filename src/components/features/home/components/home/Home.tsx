@@ -7,7 +7,7 @@ import { Box, Image, Transition } from "@mantine/core";
 import { useMediaQuery, useMounted } from "@mantine/hooks";
 import { Gallery } from "@/components/features/gallery/Gallery";
 import FullScreenScroll from "@/components/animations/full-screen-scroll/FullScreenScroll";
-
+import { Map } from "@/components/features/maps/Map";
 function Home() {
   const mounted = useMounted();
   const container = useRef<HTMLDivElement | null>(null);
@@ -45,6 +45,7 @@ function Home() {
           {!matches && <Introduce />}
           {!matches && <Gallery />}
           <InvitationEnvelope />
+          <Map />
         </FullScreenScroll>
 
         <Transition

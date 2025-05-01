@@ -9,7 +9,6 @@ dayjs.extend(duration);
 
 function InvitationEnvelope() {
   const eventDay = Date.parse("2025-05-25T11:00:00Z");
-  const [month, setMonth] = useState<string | number>(0);
   const [date, setDate] = useState<string | number>(0);
   const [hours, setHours] = useState<string | number>(0);
   const [minutes, setMinutes] = useState<string | number>(0);
@@ -21,7 +20,6 @@ function InvitationEnvelope() {
       const timeDuration: Record<string, { [key: string]: number }> | any =
         dayjs.duration(eventDay - Date.now());
       if (timeDuration) {
-        setMonth(timeDuration["$d"].months);
         setDate(timeDuration["$d"].days);
         setHours(
           timeDuration["$d"].hours > 9
@@ -60,7 +58,7 @@ function InvitationEnvelope() {
           <Title c="wedding-red.9" fw={400} fz={{ base: 28, sm: 48 }}>
             Thiệp Mời
           </Title>
-          <Text c="gray.9" mt={24} fz={{ base: 20, sm: 28 }}>
+          <Text c="gray.9" mt={16} fz={{ base: 20, sm: 28 }}>
             TRÂN TRỌNG KÍNH MỜI
           </Text>
           <Title
@@ -121,37 +119,9 @@ function InvitationEnvelope() {
 
           <Flex justify="center">
             <div className="flex gap-1">
-              {parseInt(month as string, 10) > 0 && (
-                <>
-                  <Box>
-                    <Box
-                      fz={{ base: 32, sm: 56 }}
-                      fw={600}
-                      px={{ base: 4, sm: 12 }}
-                      py={{ base: 8, sm: 16 }}
-                      className="rounded"
-                      c="wedding-red.9"
-                      bd={"2px solid var(--mantine-color-wedding-red-9)"}
-                    >
-                      <SlidingNumber value={month} padStart={true} />
-                    </Box>
-                    <Text mt={4} fw={600} fz={14} c="gray.7">
-                      tháng
-                    </Text>
-                  </Box>
-
-                  <Text
-                    c="wedding-red.9"
-                    fz={{ base: 24, sm: 48 }}
-                    mt={{ base: 8, sm: 8 }}
-                  >
-                    :
-                  </Text>
-                </>
-              )}
               <Box>
                 <Box
-                  fz={{ base: 32, sm: 56 }}
+                  fz={{ base: 24, sm: 56 }}
                   fw={600}
                   px={{ base: 4, sm: 12 }}
                   py={{ base: 8, sm: 16 }}
@@ -174,7 +144,7 @@ function InvitationEnvelope() {
               </Text>
               <Box>
                 <Box
-                  fz={{ base: 32, sm: 56 }}
+                  fz={{ base: 24, sm: 56 }}
                   fw={600}
                   px={{ base: 4, sm: 12 }}
                   py={{ base: 8, sm: 16 }}
@@ -197,7 +167,7 @@ function InvitationEnvelope() {
               </Text>
               <Box>
                 <Box
-                  fz={{ base: 32, sm: 56 }}
+                  fz={{ base: 24, sm: 56 }}
                   fw={600}
                   px={{ base: 4, sm: 12 }}
                   py={{ base: 8, sm: 16 }}
@@ -220,7 +190,7 @@ function InvitationEnvelope() {
               </Text>
               <Box>
                 <Box
-                  fz={{ base: 32, sm: 56 }}
+                  fz={{ base: 24, sm: 56 }}
                   fw={600}
                   px={{ base: 4, sm: 12 }}
                   py={{ base: 8, sm: 16 }}
