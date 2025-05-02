@@ -55,15 +55,28 @@ function Gallery() {
           controlSize={36}
           loop
           withControls
-          slideSize="70%"
           height="100%"
           align="start"
           slideGap="sm"
+          slideSize={{
+            base: "100%",
+            sm: "50%",
+            md: "33.333333%",
+            lg: "25%",
+            xl: "20%",
+          }}
         >
           {[...Array(20)].map((_, index: number) => (
-            <Carousel.Slide key={`gallery-${index}`}>
+            <Carousel.Slide
+              key={`gallery-${index}`}
+              h="100%"
+              w="100%"
+              pos="relative"
+            >
               <Image
                 radius="lg"
+                fit="cover"
+                h={{ base: "100%", sm: 500 }}
                 alt={`gallery-${index}`}
                 src={`/images/gallery/image-${
                   index < 9 ? `0${index + 1}` : index + 1

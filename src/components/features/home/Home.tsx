@@ -44,9 +44,9 @@ function Home() {
 
         <FullScreenScroll>
           <Landing />
-          {!matches && <Quote />}
+          <Quote />
           {!matches && <Introduce />}
-          {!matches && <Gallery />}
+          <Gallery />
           <InvitationEnvelope />
           <Map />
         </FullScreenScroll>

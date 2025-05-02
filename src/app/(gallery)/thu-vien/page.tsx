@@ -1,8 +1,17 @@
+"use client";
+
+import { Masonry } from "@/components/features/gallery/components";
 import { Container, Title } from "@mantine/core";
+
+const images = [...Array(37)].map((_, index) => ({
+  id: index,
+  src: `/images/gallery/image-${index < 9 ? `0${index + 1}` : index + 1}.jpg`,
+  alt: `Image ${index + 1}`,
+}));
 
 function GalleryPage() {
   return (
-    <Container>
+    <Container size="100%">
       <Title
         c="wedding-red.9"
         ta="center"
@@ -12,6 +21,7 @@ function GalleryPage() {
       >
         Thư viện ảnh
       </Title>
+      <Masonry items={images} />
     </Container>
   );
 }
