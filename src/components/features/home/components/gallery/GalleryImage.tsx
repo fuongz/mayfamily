@@ -15,6 +15,7 @@ function GalleryImage({ src }: GalleryImageProps) {
         src={src}
         loading="lazy"
         fit="contain"
+        alt={`gallery-${src}`}
         onLoad={() => setIsLoading(false)}
         style={{ display: isLoading ? "none" : "block" }}
       />

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { AnimatedGroup } from "@/components/motions";
-import { IconBrandGoogleFilled, IconCalendar } from "@tabler/icons-react";
+import { IconCalendar } from "@tabler/icons-react";
 
 dayjs.extend(duration);
 
@@ -44,7 +44,7 @@ function InvitationEnvelope() {
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [eventDay]);
 
   return (
     <Flex h="100%" ta="center" justify="center" align="center">

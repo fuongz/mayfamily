@@ -64,6 +64,7 @@ function Gallery() {
             <Carousel.Slide key={`gallery-${index}`}>
               <Image
                 radius="lg"
+                alt={`gallery-${index}`}
                 src={`/images/gallery/image-${
                   index < 9 ? `0${index + 1}` : index + 1
                 }.jpg`}

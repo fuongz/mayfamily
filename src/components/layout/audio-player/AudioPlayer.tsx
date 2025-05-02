@@ -1,15 +1,8 @@
 "use client";
 
-import { ActionIcon, Box, Flex, Text, Transition } from "@mantine/core";
+import { ActionIcon, Box, Transition } from "@mantine/core";
 import { useMounted } from "@mantine/hooks";
-import {
-  IconMusic,
-  IconMusicOff,
-  IconPlayerPause,
-  IconPlayerPauseFilled,
-  IconPlayerPlay,
-  IconPlayerPlayFilled,
-} from "@tabler/icons-react";
+import { IconMusic, IconMusicOff } from "@tabler/icons-react";
 import { useRef, useState } from "react";
 
 const audios = [

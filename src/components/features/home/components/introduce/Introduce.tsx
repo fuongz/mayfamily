@@ -11,6 +11,7 @@ function Introduce() {
         style={{ transform: "translateX(-50%)" }}
       >
         <Image
+          alt="chu-hy-top"
           src="/images/chu-hy-top.png"
           w={{ base: 128, sm: 148 }}
           h={{ base: 128, sm: 148 }}
@@ -110,6 +111,7 @@ function Introduce() {
           viewOptions={{ margin: "0px 0px -300px 0px" }}
         >
           <Image
+            alt="bridal"
             src="/images/bridal.png"
             w={{ sm: 400, base: 200 }}
             h={{ sm: 800, base: 400 }}
@@ -133,6 +135,7 @@ function Introduce() {
           viewOptions={{ margin: "0px 0px -300px 0px" }}
         >
           <Image
+            alt="groom"
             src="/images/groom.png"
             w={{ sm: 400, base: 200 }}
             h={{ sm: 800, base: 400 }}
