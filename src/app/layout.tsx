@@ -8,6 +8,7 @@ import "@mantine/carousel/styles.css";
 
 import Providers from "./providers";
 import { League_Gothic } from "next/font/google";
+import { AudioPlayer } from "@/components/layout/audio-player/AudioPlayer";
 
 export const metadata: Metadata = {
   title: "Trinh & Phương",
@@ -50,7 +51,10 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={fontTitle.variable}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <main>{children}</main>
+          <AudioPlayer />
+        </Providers>
       </body>
     </html>
   );

@@ -1,9 +1,9 @@
 import { InView } from "@/components/motions/in-view/InView";
-import { Box, Grid, Image, Text, Title } from "@mantine/core";
+import { Box, Flex, Grid, Image, Text, Title } from "@mantine/core";
 
 function Introduce() {
   return (
-    <Box pos="relative" h="100%" pt={16}>
+    <Flex direction="column" pos="relative" h="100%" pt={16}>
       <Box
         pos="absolute"
         top={16}
@@ -139,7 +139,7 @@ function Introduce() {
           />
         </InView>
       </Box>
-    </Box>
+    </Flex>
   );
 }
 

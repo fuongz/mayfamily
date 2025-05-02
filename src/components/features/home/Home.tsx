@@ -1,13 +1,16 @@
 import React, { useRef } from "react";
-import { InvitationEnvelope } from "@/components/features/invitation-envelope/InvitationEnvelope";
-import { Introduce } from "@/components/features/introduce/Introduce";
-import { Quote } from "@/components/features/quote/Quote";
-import { Landing } from "@/components/features/landing/Landing";
 import { Box, Image, Transition } from "@mantine/core";
 import { useMediaQuery, useMounted } from "@mantine/hooks";
-import { Gallery } from "@/components/features/gallery/Gallery";
-import FullScreenScroll from "@/components/animations/full-screen-scroll/FullScreenScroll";
-import { Map } from "@/components/features/maps/Map";
+import { FullScreenScroll } from "@/components/animations";
+import {
+  Gallery,
+  Introduce,
+  InvitationEnvelope,
+  Landing,
+  Map,
+  Quote,
+} from "@/components/features/home";
+
 function Home() {
   const mounted = useMounted();
   const container = useRef<HTMLDivElement | null>(null);

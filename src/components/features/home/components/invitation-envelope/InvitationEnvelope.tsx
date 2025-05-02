@@ -1,9 +1,10 @@
 import { SlidingNumber } from "@/components/animations/sliding-number/SlidingNumber";
-import { Box, Flex, Text, Title } from "@mantine/core";
+import { Box, Flex, Text, Title, Button } from "@mantine/core";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { AnimatedGroup } from "@/components/motions";
+import { IconBrandGoogleFilled, IconCalendar } from "@tabler/icons-react";
 
 dayjs.extend(duration);
 
@@ -13,6 +14,10 @@ function InvitationEnvelope() {
   const [hours, setHours] = useState<string | number>(0);
   const [minutes, setMinutes] = useState<string | number>(0);
   const [seconds, setSeconds] = useState<string | number>(0);
+
+  const getGoogleCalendarUrl = () => {
+    return `https://calendar.app.google/wnqSwgMJ8m5Smk9M8`;
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,7 +47,7 @@ function InvitationEnvelope() {
   }, []);
 
   return (
-    <Flex ta="center" justify="center" align="center">
+    <Flex h="100%" ta="center" justify="center" align="center">
       <Flex
         pos="relative"
         className="z-10"
@@ -55,19 +60,18 @@ function InvitationEnvelope() {
           preset="blur"
           viewOptions={{ margin: "0px 0px -200px 0px" }}
         >
-          <Title c="wedding-red.9" fw={400} fz={{ base: 28, sm: 48 }}>
+          <Title
+            c="wedding-red.9"
+            ff="var(--font-title)"
+            fw={400}
+            fz={{ base: 28, sm: 36 }}
+          >
             Thiệp Mời
           </Title>
           <Text c="gray.9" mt={16} fz={{ base: 20, sm: 28 }}>
             TRÂN TRỌNG KÍNH MỜI
           </Text>
-          <Title
-            c="wedding-red.9"
-            fw={400}
-            ff="var(--font-title)"
-            fz={{ base: 32, sm: 48 }}
-            mb={8}
-          >
+          <Title c="wedding-red.9" fw={400} fz={{ base: 32, sm: 48 }}>
             Quý Khách
           </Title>
           <Text fw={500} fz={{ base: 16, sm: 24 }} c="gray.9">
@@ -78,9 +82,12 @@ function InvitationEnvelope() {
             pos="relative"
             c="wedding-red.9"
             fw={400}
-            fz={{ base: 36, sm: 72 }}
+            fz={{ base: 36, sm: 68 }}
           >
-            Nhà Hàng Tiệc Cưới Minh Thuỳ
+            Nhà Hàng Tiệc Cưới <br />
+            <Text component="span" fw={400} fz={{ base: 48, sm: 68 }}>
+              Minh Thuỳ
+            </Text>
           </Title>
           <Title
             c="gray.9"
@@ -88,7 +95,6 @@ function InvitationEnvelope() {
             fw={400}
             ff="var(--font-title)"
             fz={{ base: 24, sm: 36 }}
-            mb={8}
           >
             Sảnh B
           </Title>
@@ -112,7 +118,7 @@ function InvitationEnvelope() {
             c="wedding-red.9"
             fw={400}
             ff="var(--font-title)"
-            fz={{ base: 36, sm: 72 }}
+            fz={{ base: 36, sm: 68 }}
           >
             25-05-2025
           </Text>
@@ -205,6 +211,22 @@ function InvitationEnvelope() {
                 </Text>
               </Box>
             </div>
+          </Flex>
+
+          <Flex justify="center" mt={16}>
+            <Button
+              component="a"
+              href={getGoogleCalendarUrl()}
+              size="lg"
+              variant="filled"
+              color="yellow.6"
+              c="black"
+              leftSection={<IconCalendar />}
+              target="_blank"
+              mt={16}
+            >
+              Lưu lại sự kiện
+            </Button>
           </Flex>
         </AnimatedGroup>
       </Flex>
