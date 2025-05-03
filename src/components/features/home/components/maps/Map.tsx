@@ -30,7 +30,7 @@ function Map() {
         </Title>
 
         <Flex direction="column">
-          <AspectRatio ratio={16 / 9} w="100%" h={{ base: 300, sm: 400 }}>
+          <AspectRatio ratio={16 / 9} w="100%" h={{ base: 200, sm: 400 }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3268.371803254187!2d106.76661492495775!3d10.840675990304527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527a87fcdb123%3A0xaeb846db7ee2f4ff!2sWedding%20Restaurant%20Minh%20Thuy!5e0!3m2!1sen!2sus!4v1746084474401!5m2!1sen!2sus"
               width="100%"
@@ -52,14 +52,13 @@ function Map() {
               c="black"
               leftSection={<IconMapSearch />}
               target="_blank"
-              mt={16}
+              mt={8}
             >
               Tìm đường
             </Button>
             <Text
               c="wedding-red.9"
               ta="center"
-              mt={16}
               fw={500}
               className="text-shadow"
             >
@@ -78,7 +77,7 @@ function Map() {
               src="/images/wedding-cartoon.png"
               alt="map"
               w="100px"
-              mt={16}
+              mt={8}
             />
           </Stack>
         </Flex>

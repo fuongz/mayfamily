@@ -1,5 +1,9 @@
 import { Modal, ActionIcon, Group, Image } from "@mantine/core";
-import { IconArrowLeft, IconArrowRight, IconX } from "@tabler/icons-react";
+import {
+  IconChevronLeftPipe,
+  IconChevronRightPipe,
+  IconX,
+} from "@tabler/icons-react";
 
 interface LightBoxProps {
   images: {
@@ -25,42 +29,74 @@ export function LightBox({
   const currentImage = images[currentIndex];
 
   return (
-    <Modal opened={opened} onClose={onClose} withCloseButton={false}>
-      <Group pos="fixed" top={16} left={16} gap="xs">
-        <ActionIcon
-          variant="filled"
-          color="wedding-red.9"
-          radius="xl"
-          size={56}
-          onClick={onClose}
-        >
-          <IconX size={24} />
+    <Modal
+      opened={opened}
+      onClose={onClose}
+      centered
+      withCloseButton={false}
+      styles={{
+        root: {
+          padding: 0,
+          zIndex: 101,
+        },
+        body: {
+          padding: 0,
+        },
+        content: {
+          overflow: "hidden",
+        },
+      }}
+    >
+      <Group
+        pos="fixed"
+        top={8}
+        right={8}
+        gap="xs"
+        style={{
+          backdropFilter: "blur(5px)",
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          borderRadius: "100%",
+        }}
+      >
+        <ActionIcon variant="transparent" c="white" size={36} onClick={onClose}>
+          <IconX size={16} />
         </ActionIcon>
       </Group>
 
-      <Group pos="fixed" left={16} right={16} style={{ pointerEvents: "none" }}>
+      <Group
+        pos="fixed"
+        justify="space-between"
+        left={0}
+        right={0}
+        bottom={0}
+        style={{
+          pointerEvents: "none",
+          backdropFilter: "blur(5px)",
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+        }}
+      >
         <ActionIcon
-          variant="filled"
-          color="wedding-red.9"
-          radius="xl"
-          size={56}
+          variant="transparent"
+          size={48}
+          radius="0"
+          color="rgba(255, 255, 255, 1)"
           onClick={onPrevious}
           disabled={currentIndex === 0}
           style={{ pointerEvents: "auto" }}
         >
-          <IconArrowLeft size={24} />
+          <IconChevronLeftPipe size={24} />
         </ActionIcon>
 
         <ActionIcon
-          variant="filled"
-          color="wedding-red.9"
-          radius="xl"
-          size={56}
+          variant="transparent"
+          radius="0"
+          color="rgba(255, 255, 255, 1)"
+          size={48}
           onClick={onNext}
           disabled={currentIndex === images.length - 1}
           style={{ pointerEvents: "auto", marginLeft: "auto" }}
         >
-          <IconArrowRight size={24} />
+          <IconChevronRightPipe size={24} />
         </ActionIcon>
       </Group>
 
@@ -69,9 +105,7 @@ export function LightBox({
           src={currentImage.src}
           alt={currentImage.alt || ""}
           fit="contain"
-          h="90vh"
           w="auto"
-          style={{ maxWidth: "90vw" }}
         />
       )}
     </Modal>

@@ -1,5 +1,6 @@
 "use client";
 
+import InitialModal from "@/components/features/home/components/initial-modal/InitialModal";
 import { ActionIcon, Box, Transition } from "@mantine/core";
 import { useMounted } from "@mantine/hooks";
 import { IconMusic, IconMusicOff } from "@tabler/icons-react";
@@ -42,51 +43,54 @@ function AudioPlayer() {
   };
 
   return (
-    <Transition
-      mounted={mounted}
-      transition="fade-down"
-      enterDelay={500}
-      duration={700}
-      timingFunction="ease"
-    >
-      {(transitionStyles) => (
-        <Box
-          style={{
-            ...transitionStyles,
-            zIndex: 1000,
-          }}
-          pos="fixed"
-          top={16}
-          right={16}
-        >
-          <audio
-            ref={audioRef}
-            src={audios[currentIndex].src}
-            onEnded={() => {
-              const nextIndex = (currentIndex + 1) % audios.length;
-              setCurrentIndex(nextIndex);
-              audioRef.current?.addEventListener("canplay", () => {
-                audioRef.current?.play();
-              });
+    <>
+      <InitialModal onMusicStatusChange={togglePlay} />
+      <Transition
+        mounted={mounted}
+        transition="fade-down"
+        enterDelay={500}
+        duration={700}
+        timingFunction="ease"
+      >
+        {(transitionStyles) => (
+          <Box
+            style={{
+              ...transitionStyles,
+              zIndex: 99,
             }}
-          />
-          <ActionIcon
-            size={56}
-            autoContrast
-            color="wedding-red.9"
-            radius="xl"
-            onClick={togglePlay}
-            aria-label="Play/pause"
+            pos="fixed"
+            top={16}
+            right={16}
           >
-            {isPlaying ? (
-              <IconMusic className="animate-spin duration-700" />
-            ) : (
-              <IconMusicOff />
-            )}
-          </ActionIcon>
-        </Box>
-      )}
-    </Transition>
+            <audio
+              ref={audioRef}
+              src={audios[currentIndex].src}
+              onEnded={() => {
+                const nextIndex = (currentIndex + 1) % audios.length;
+                setCurrentIndex(nextIndex);
+                audioRef.current?.addEventListener("canplay", () => {
+                  audioRef.current?.play();
+                });
+              }}
+            />
+            <ActionIcon
+              size={56}
+              autoContrast
+              color="wedding-red.9"
+              radius="xl"
+              onClick={togglePlay}
+              aria-label="Play/pause"
+            >
+              {isPlaying ? (
+                <IconMusic className="animate-spin duration-700" />
+              ) : (
+                <IconMusicOff />
+              )}
+            </ActionIcon>
+          </Box>
+        )}
+      </Transition>
+    </>
   );
 }
 

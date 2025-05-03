@@ -5,3 +5,4 @@ export * from "./components/maps/Map";
 export * from "./components/quote/Quote";
 export * from "./components/introduce/Introduce";
 export * from "./components/landing/Landing";
+export * from "./components/initial-modal/InitialModal";
