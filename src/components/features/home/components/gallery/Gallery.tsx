@@ -114,7 +114,7 @@ function Gallery() {
           leftSection={<IconPhotoFilled />}
           mt={16}
         >
-          Xem toàn bộ
+          Xem toàn bộ ảnh
         </Button>
       </Flex>
 

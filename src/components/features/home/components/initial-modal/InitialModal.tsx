@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Flex, Group, Image, Modal, Text } from "@mantine/core";
+import { Button, Flex, Image, Modal, Text } from "@mantine/core";
 import { useMounted } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 
@@ -30,6 +30,7 @@ function InitialModal({ onMusicStatusChange }: Props) {
       opened={opened}
       onClose={onClose}
       centered
+      size={480}
       withCloseButton={false}
     >
       <Flex justify="center" mb={16}>
@@ -40,14 +41,22 @@ function InitialModal({ onMusicStatusChange }: Props) {
         Nghe nhạc và xem hành trình của chúng mình nhé!
       </Text>
 
-      <Text fs="italic" fz={14} c="gray.6" ta="center" mt={16}>
+      <Text fs="italic" fz={14} c="gray.6" ta="center" mt={8}>
         Kindly use headphones to enjoy the best experience!
       </Text>
 
-      <Group mt={16} justify="space-between">
+      <Flex
+        gap={16}
+        mt={{ base: 16, md: 48 }}
+        direction={{ base: "column", md: "row" }}
+        align="center"
+        w="100%"
+        justify="space-between"
+      >
         <Button
           variant="filled"
-          flex={1}
+          size="lg"
+          w={{ base: "100%", md: "auto" }}
           color="wedding-red.9"
           onClick={() => {
             onMusicStatusChange(true);
@@ -57,10 +66,10 @@ function InitialModal({ onMusicStatusChange }: Props) {
           Ok luôn 🥳
         </Button>
 
-        <Button variant="transparent" c="wedding-red.9" onClick={onClose}>
-          Lúc khác nhé 🥲
+        <Button size="md" variant="transparent" c="gray.7" onClick={onClose}>
+          Đang không tiện nghe 🥲
         </Button>
-      </Group>
+      </Flex>
     </Modal>
   );
 }
