@@ -7,8 +7,20 @@ import { useRef, useState } from "react";
 
 const audios = [
   {
-    src: "/audio/Elvis_Presley_Cant_Help_Falling_In_Love_Cover_by_Elliot_James_Reay.mp3",
-    title: "Elvis Presley - Can't Help Falling in Love",
+    src: "/audio/Until_I_Found_You.mp3",
+    title: "Until I Found You",
+  },
+  {
+    src: "/audio/Put_Your_Head_On_My_Shoulder.mp3",
+    title: "Put Your Head On My Shoulder",
+  },
+  {
+    src: "/audio/Cant_Help_Falling_In_Love.mp3",
+    title: "Can't Help Falling In Love",
+  },
+  {
+    src: "/audio/I_Think_They_Call_This_Love.mp3",
+    title: "I Think They Call This Love",
   },
 ];
 
@@ -16,6 +28,7 @@ function AudioPlayer() {
   const mounted = useMounted();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -48,8 +61,14 @@ function AudioPlayer() {
         >
           <audio
             ref={audioRef}
-            src={audios[0].src}
-            onEnded={() => setIsPlaying(false)}
+            src={audios[currentIndex].src}
+            onEnded={() => {
+              const nextIndex = (currentIndex + 1) % audios.length;
+              setCurrentIndex(nextIndex);
+              audioRef.current?.addEventListener("canplay", () => {
+                audioRef.current?.play();
+              });
+            }}
           />
           <ActionIcon
             size={56}

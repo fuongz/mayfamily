@@ -16,7 +16,7 @@ function InvitationEnvelope() {
   const [seconds, setSeconds] = useState<string | number>(0);
 
   const getGoogleCalendarUrl = () => {
-    return `https://calendar.app.google/wnqSwgMJ8m5Smk9M8`;
+    return `https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NzdyNmlxOTN1MXNzbGgyNzQ5cmlwbGdhZDEgZmFtaWx5MTgzNTMzNzE1OTAyMDI4MDk0NDlAZw&tmsrc=family18353371590202809449%40group.calendar.google.com`;
   };
 
   useEffect(() => {
@@ -213,21 +213,19 @@ function InvitationEnvelope() {
             </div>
           </Flex>
 
-          <Flex justify="center" mt={16}>
-            <Button
-              component="a"
-              href={getGoogleCalendarUrl()}
-              size="lg"
-              variant="filled"
-              color="yellow.6"
-              c="black"
-              leftSection={<IconCalendar />}
-              target="_blank"
-              mt={16}
-            >
-              Lưu lại sự kiện
-            </Button>
-          </Flex>
+          <Button
+            component="a"
+            href={getGoogleCalendarUrl()}
+            size="lg"
+            variant="filled"
+            color="yellow.6"
+            c="black"
+            leftSection={<IconCalendar />}
+            target="_blank"
+            mt={16}
+          >
+            Lưu lại sự kiện
+          </Button>
         </AnimatedGroup>
       </Flex>
     </Flex>

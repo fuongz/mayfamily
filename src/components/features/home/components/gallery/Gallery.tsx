@@ -1,7 +1,7 @@
 import { InView } from "@/components/motions/in-view/InView";
 import { Carousel } from "@mantine/carousel";
 import { Button, Flex, Image, Title } from "@mantine/core";
-import { IconPhoto } from "@tabler/icons-react";
+import { IconPhotoFilled } from "@tabler/icons-react";
 import Link from "next/link";
 
 function Gallery() {
@@ -32,7 +32,8 @@ function Gallery() {
           ta="center"
           fw={400}
           fz={{ base: 48, sm: 56 }}
-          mb={32}
+          mt={16}
+          mb={8}
         >
           Thư viện ảnh
         </Title>
@@ -75,8 +76,8 @@ function Gallery() {
             >
               <Image
                 radius="lg"
-                fit="cover"
-                h={{ base: "100%", sm: 500 }}
+                fit="contain"
+                h={{ base: 450, sm: 500 }}
                 alt={`gallery-${index}`}
                 src={`/images/gallery/image-${
                   index < 9 ? `0${index + 1}` : index + 1
@@ -94,10 +95,10 @@ function Gallery() {
         variant="filled"
         color="yellow.6"
         c="black"
-        leftSection={<IconPhoto />}
+        leftSection={<IconPhotoFilled />}
         mt={16}
       >
-        Xem album
+        Xem toàn bộ
       </Button>
     </Flex>
   );
