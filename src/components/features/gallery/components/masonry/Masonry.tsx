@@ -82,10 +82,14 @@ function Masonry({ items }: MasonryProps) {
           setOpened(false);
         }}
         onPrevious={() => {
-          setCurrentIndex(currentIndex - 1);
+          if (currentIndex > 0) {
+            setCurrentIndex((prev) => prev - 1);
+          }
         }}
         onNext={() => {
-          setCurrentIndex(currentIndex + 1);
+          if (currentIndex < items.length - 1) {
+            setCurrentIndex((prev) => prev + 1);
+          }
         }}
       />
     </>

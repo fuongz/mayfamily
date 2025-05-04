@@ -1,9 +1,11 @@
 import { Modal, ActionIcon, Group, Image } from "@mantine/core";
+import { useHotkeys } from "@mantine/hooks";
 import {
   IconChevronLeftPipe,
   IconChevronRightPipe,
   IconX,
 } from "@tabler/icons-react";
+import { useEffect } from "react";
 
 interface LightBoxProps {
   images: {
@@ -27,6 +29,11 @@ export function LightBox({
   onNext,
 }: LightBoxProps) {
   const currentImage = images[currentIndex];
+  useHotkeys([
+    ["ArrowLeft", onPrevious],
+    ["ArrowRight", onNext],
+    ["Escape", onClose],
+  ]);
 
   return (
     <Modal

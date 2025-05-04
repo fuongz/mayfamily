@@ -5,14 +5,16 @@ import { Button, Flex, Image, Title } from "@mantine/core";
 import { IconPhotoFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import { useState } from "react";
-
+import styles from "./Gallery.module.css";
 function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [opened, setOpened] = useState(false);
 
-  const images = [...Array(20)].map((_, index: number) => ({
+  const images = [...Array(5)].map((_, index: number) => ({
     id: index,
-    src: `/images/gallery/image-${index < 9 ? `0${index + 1}` : index + 1}.jpg`,
+    src: `/images/gallery/home/image-${
+      index < 9 ? `0${index + 1}` : index + 1
+    }.jpg`,
     alt: `gallery-${index}`,
   }));
 
@@ -66,8 +68,8 @@ function Gallery() {
         >
           <Carousel
             controlSize={36}
-            loop
             withControls
+            draggable
             height="100%"
             align="start"
             slideGap="sm"
@@ -78,6 +80,8 @@ function Gallery() {
               lg: "25%",
               xl: "20%",
             }}
+            slidesToScroll="auto"
+            classNames={styles}
           >
             {images.map((image, index: number) => (
               <Carousel.Slide
@@ -95,9 +99,7 @@ function Gallery() {
                   fit="contain"
                   h={{ base: 450, sm: 500 }}
                   alt={`gallery-${index}`}
-                  src={`/images/gallery/image-${
-                    index < 9 ? `0${index + 1}` : index + 1
-                  }.jpg`}
+                  src={image.src}
                 />
               </Carousel.Slide>
             ))}
@@ -123,8 +125,8 @@ function Gallery() {
         currentIndex={currentIndex}
         opened={opened}
         onClose={() => setOpened(false)}
-        onPrevious={() => setCurrentIndex(currentIndex - 1)}
-        onNext={() => setCurrentIndex(currentIndex + 1)}
+        onPrevious={() => setCurrentIndex((prev) => prev - 1)}
+        onNext={() => setCurrentIndex((prev) => prev + 1)}
       />
     </>
   );
