@@ -1,3 +1,5 @@
+"use client";
+
 import { SlidingNumber } from "@/components/animations/sliding-number/SlidingNumber";
 import { Box, Flex, Text, Title, Button } from "@mantine/core";
 import { useEffect, useState } from "react";

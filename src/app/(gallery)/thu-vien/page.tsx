@@ -1,17 +1,12 @@
-"use client";
-
 import { Masonry } from "@/components/features/gallery/components";
+import { URL } from "@/config/url";
 import { Container, Title } from "@mantine/core";
 
-const images = [...Array(37)].map((_, index) => ({
-  id: index,
-  src: `/images/gallery/image-${index < 9 ? `0${index + 1}` : index + 1}.jpg`,
-  alt: `Image ${index + 1}`,
-}));
-
-function GalleryPage() {
+async function GalleryPage() {
+  const res = await fetch(URL.CDN_URL + "/gallery.json");
+  const images = await res.json();
   return (
-    <Container size="100%">
+    <Container size="100%" p={4}>
       <Title
         c="wedding-red.9"
         ta="center"

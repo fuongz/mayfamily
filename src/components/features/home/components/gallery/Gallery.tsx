@@ -1,3 +1,5 @@
+"use client";
+
 import { LightBox } from "@/components/features/gallery/components/lightbox/LightBox";
 import { InView } from "@/components/motions/in-view/InView";
 import { Carousel } from "@mantine/carousel";
@@ -6,17 +8,13 @@ import { IconPhotoFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "./Gallery.module.css";
-function Gallery() {
+function Gallery({
+  images,
+}: {
+  images: Array<{ file_url: string; filename: string; id: string }>;
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [opened, setOpened] = useState(false);
-
-  const images = [...Array(5)].map((_, index: number) => ({
-    id: index,
-    src: `/images/gallery/home/image-${
-      index < 9 ? `0${index + 1}` : index + 1
-    }.jpg`,
-    alt: `gallery-${index}`,
-  }));
 
   return (
     <>
@@ -98,8 +96,8 @@ function Gallery() {
                   radius="lg"
                   fit="contain"
                   h={{ base: 450, sm: 500 }}
-                  alt={`gallery-${index}`}
-                  src={image.src}
+                  alt={image.filename}
+                  src={image.file_url}
                 />
               </Carousel.Slide>
             ))}
@@ -121,7 +119,10 @@ function Gallery() {
       </Flex>
 
       <LightBox
-        images={images}
+        images={images.map((image) => ({
+          id: image.id,
+          src: image.file_url,
+        }))}
         currentIndex={currentIndex}
         opened={opened}
         onClose={() => setOpened(false)}

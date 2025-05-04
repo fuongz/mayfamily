@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import { Box, Image, Transition } from "@mantine/core";
 import { useMediaQuery, useMounted } from "@mantine/hooks";
@@ -11,7 +13,11 @@ import {
   Quote,
 } from "@/components/features/home";
 
-function Home() {
+function Home({
+  images,
+}: {
+  images: Array<{ file_url: string; filename: string; id: string }>;
+}) {
   const mounted = useMounted();
   const container = useRef<HTMLDivElement | null>(null);
   const matches = useMediaQuery("(min-width: 56.25em)");
@@ -46,7 +52,7 @@ function Home() {
           <Landing />
           <Quote />
           {!matches && <Introduce />}
-          <Gallery />
+          <Gallery images={images} />
           <InvitationEnvelope />
           <Map />
         </FullScreenScroll>

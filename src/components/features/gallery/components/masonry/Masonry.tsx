@@ -1,3 +1,5 @@
+"use client";
+
 import {
   SimpleGrid,
   Box,
@@ -12,9 +14,10 @@ import { LightBox } from "../lightbox/LightBox";
 import { useState } from "react";
 interface MasonryProps {
   items: {
-    id: string | number;
-    src: string;
-    alt?: string;
+    id: number;
+    file_url: string;
+    filename: string;
+    folder: string;
   }[];
 }
 
@@ -47,10 +50,12 @@ function Masonry({ items }: MasonryProps) {
                 setCurrentIndex(index);
                 setOpened(true);
               }}
+              w="100%"
+              h="100%"
             >
               <Image
-                src={item.src}
-                alt={item.alt || ""}
+                src={item.file_url}
+                alt={item.filename}
                 h={{ base: 150, sm: 170, lg: 200 }}
                 fit="cover"
                 styles={(theme: MantineTheme) => ({
@@ -74,7 +79,7 @@ function Masonry({ items }: MasonryProps) {
       <LightBox
         images={items.map((item) => ({
           id: item.id,
-          src: item.src,
+          src: item.file_url,
         }))}
         currentIndex={currentIndex}
         opened={opened}

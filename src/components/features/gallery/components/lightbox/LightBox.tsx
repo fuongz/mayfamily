@@ -1,3 +1,5 @@
+"use client";
+
 import { Modal, ActionIcon, Group, Image, Box } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 import {

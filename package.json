@@ -16,6 +16,7 @@
     "@mantine/form": "^7.17.7",
     "@mantine/hooks": "^7.17.7",
     "@mantine/modals": "^7.17.7",
+    "@next/env": "^15.3.1",
     "@react-spring/web": "^9.7.5",
     "@tabler/icons-react": "^3.31.0",
     "clsx": "^2.1.1",
