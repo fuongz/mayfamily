@@ -1,22 +1,14 @@
 "use client";
 
-import { Modal, ActionIcon, Group, Image, Box } from "@mantine/core";
+import { Modal, ActionIcon, Group } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 import {
   IconChevronLeftPipe,
   IconChevronRightPipe,
   IconX,
-  IconZoomCancel,
-  IconZoomIn,
-  IconZoomOut,
 } from "@tabler/icons-react";
-import React, { useRef } from "react";
-import {
-  TransformWrapper,
-  TransformComponent,
-  ReactZoomPanPinchRef,
-} from "react-zoom-pan-pinch";
-
+import React from "react";
+import { ZoomableImage } from "./components";
 interface LightBoxProps {
   images: {
     id: string | number;
@@ -39,7 +31,6 @@ export function LightBox({
   onNext,
 }: LightBoxProps) {
   const currentImage = images[currentIndex];
-  const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
 
   useHotkeys([
     ["ArrowLeft", onPrevious],
@@ -87,14 +78,15 @@ export function LightBox({
       <Group
         pos="fixed"
         justify="space-between"
-        left={0}
-        right={0}
-        bottom={0}
+        left={8}
+        right={8}
+        bottom={8}
         style={{
           pointerEvents: "none",
           backdropFilter: "blur(5px)",
           backgroundColor: "rgba(0, 0, 0, 0.3)",
           zIndex: 101,
+          borderRadius: 8,
         }}
       >
         <ActionIcon
@@ -122,98 +114,7 @@ export function LightBox({
         </ActionIcon>
       </Group>
 
-      {currentImage && (
-        <TransformWrapper
-          disablePadding
-          smooth
-          initialScale={1}
-          ref={transformComponentRef}
-        >
-          {(utils) => (
-            <React.Fragment>
-              <Controls {...utils} />
-              <TransformComponent>
-                <Image
-                  src={currentImage.src}
-                  alt={currentImage.alt || ""}
-                  fit="contain"
-                  w="auto"
-                />
-              </TransformComponent>
-            </React.Fragment>
-          )}
-        </TransformWrapper>
-      )}
+      <ZoomableImage src={currentImage.src} alt={currentImage.alt} />
     </Modal>
   );
 }
-
-const Controls = ({
-  zoomIn,
-  zoomOut,
-  resetTransform,
-}: {
-  zoomIn: () => void;
-  zoomOut: () => void;
-  resetTransform: () => void;
-}) => (
-  <Group
-    pos="absolute"
-    top={8}
-    gap={8}
-    left={8}
-    style={{ zIndex: 101, pointerEvents: "auto" }}
-  >
-    <Box
-      style={{
-        backdropFilter: "blur(5px)",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
-        borderRadius: 8,
-      }}
-    >
-      <ActionIcon
-        variant="transparent"
-        c="white"
-        size={36}
-        onClick={() => zoomIn()}
-      >
-        <IconZoomIn size={16} />
-      </ActionIcon>
-    </Box>
-    <Box
-      style={{
-        backdropFilter: "blur(5px)",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
-        boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
-        borderRadius: 8,
-      }}
-    >
-      <ActionIcon
-        variant="transparent"
-        c="white"
-        size={36}
-        onClick={() => zoomOut()}
-      >
-        <IconZoomOut size={16} />
-      </ActionIcon>
-    </Box>
-
-    <Box
-      style={{
-        backdropFilter: "blur(5px)",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
-        boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
-        borderRadius: 8,
-      }}
-    >
-      <ActionIcon
-        variant="transparent"
-        c="white"
-        size={36}
-        onClick={() => resetTransform()}
-      >
-        <IconZoomCancel size={16} />
-      </ActionIcon>
-    </Box>
-  </Group>
-);

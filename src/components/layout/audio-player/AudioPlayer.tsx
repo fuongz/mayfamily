@@ -46,7 +46,7 @@ function AudioPlayer() {
     if (audioRef?.current?.paused && isPlaying) {
       audioRef.current?.play();
     }
-  }, [audioRef?.current?.paused]);
+  }, [audioRef?.current?.paused, isPlaying]);
 
   return (
     <>

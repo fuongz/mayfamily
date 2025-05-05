@@ -31,19 +31,44 @@ function Home({
           timingFunction="ease"
         >
           {(transitionStyles) => (
-            <Box
-              style={transitionStyles}
-              hiddenFrom="sm"
-              pos="fixed"
-              w="100wh"
-              top={0}
-              left={0}
-            >
-              <Image
-                alt="background-top"
-                src="/images/bg.png"
-                style={{ objectFit: "cover" }}
-              />
+            <Box style={transitionStyles}>
+              <Box
+                style={transitionStyles}
+                hiddenFrom="sm"
+                pos="fixed"
+                w="100wh"
+                top={0}
+                left={0}
+              >
+                <Image
+                  alt="background-top"
+                  src="/images/bg.png"
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
+
+              <Box visibleFrom="sm" pos="fixed" top={0} left={0} w="300px">
+                <Image
+                  alt="border-pattern"
+                  src="/images/border-pattern.png"
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
+
+              <Box
+                style={{ transform: "rotate(90deg)" }}
+                visibleFrom="sm"
+                pos="fixed"
+                top={-75}
+                right={75}
+                w="300px"
+              >
+                <Image
+                  alt="border-pattern"
+                  src="/images/border-pattern.png"
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
             </Box>
           )}
         </Transition>
@@ -59,25 +84,56 @@ function Home({
 
         <Transition
           mounted={mounted}
-          transition="fade-down"
+          transition="fade-up"
           duration={700}
           timingFunction="ease"
         >
           {(transitionStyles) => (
-            <Box
-              style={transitionStyles}
-              hiddenFrom="sm"
-              className="transform rotate-180"
-              pos="fixed"
-              w="100%"
-              bottom={0}
-              left={0}
-            >
-              <Image
-                alt="background-bottom"
-                src="/images/bg.png"
-                style={{ objectFit: "cover" }}
-              />
+            <Box style={transitionStyles}>
+              <Box
+                hiddenFrom="sm"
+                className="transform rotate-180"
+                pos="fixed"
+                w="100%"
+                bottom={0}
+                left={0}
+              >
+                <Image
+                  alt="background-bottom"
+                  src="/images/bg.png"
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
+
+              <Box
+                visibleFrom="sm"
+                pos="fixed"
+                bottom={-75}
+                left={75}
+                w="300px"
+                style={{ transform: "rotate(270deg)" }}
+              >
+                <Image
+                  alt="border-pattern"
+                  src="/images/border-pattern.png"
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
+
+              <Box
+                style={{ transform: "rotate(180deg)" }}
+                visibleFrom="sm"
+                pos="fixed"
+                bottom={0}
+                right={0}
+                w="300px"
+              >
+                <Image
+                  alt="border-pattern"
+                  src="/images/border-pattern.png"
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
             </Box>
           )}
         </Transition>
