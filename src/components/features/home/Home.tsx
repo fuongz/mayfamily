@@ -108,8 +108,8 @@ function Home({
               <Box
                 visibleFrom="sm"
                 pos="fixed"
-                bottom={-75}
-                left={75}
+                bottom={-73}
+                left={73}
                 w="300px"
                 style={{ transform: "rotate(270deg)" }}
               >

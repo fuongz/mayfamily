@@ -12,6 +12,7 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import Link from "next/link";
 import { LightBox } from "../lightbox/LightBox";
 import { useState } from "react";
+
 interface MasonryProps {
   items: {
     id: number;
@@ -24,6 +25,10 @@ interface MasonryProps {
 function Masonry({ items }: MasonryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [opened, setOpened] = useState(false);
+
+  if (!items || items.length === 0) {
+    return <></>;
+  }
 
   return (
     <>
