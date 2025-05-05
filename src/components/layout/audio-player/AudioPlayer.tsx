@@ -4,7 +4,7 @@ import InitialModal from "@/components/features/home/components/initial-modal/In
 import { ActionIcon, Box, Transition } from "@mantine/core";
 import { useMounted } from "@mantine/hooks";
 import { IconMusic, IconMusicOff } from "@tabler/icons-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const audios = [
   {
@@ -41,6 +41,12 @@ function AudioPlayer() {
       setIsPlaying(!isPlaying);
     }
   };
+
+  useEffect(() => {
+    if (audioRef?.current?.paused && isPlaying) {
+      audioRef.current?.play();
+    }
+  }, [audioRef?.current?.paused]);
 
   return (
     <>
