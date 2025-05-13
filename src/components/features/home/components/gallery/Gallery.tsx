@@ -52,7 +52,6 @@ function Gallery({ images }: { images: Array<{ file_url: string; filename: strin
             withControls
             draggable
             height="100%"
-            align="start"
             slideGap="sm"
             slideSize={{
               base: '100%',
@@ -61,7 +60,6 @@ function Gallery({ images }: { images: Array<{ file_url: string; filename: strin
               lg: '25%',
               xl: '20%',
             }}
-            slidesToScroll="auto"
             classNames={styles}
           >
             {images.map((image, index: number) => (
