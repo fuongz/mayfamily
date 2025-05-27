@@ -1,9 +1,19 @@
 export const SIDE = 'groom'
 export const CONFIG = {
-  bride: {
+  bridal: {
     title: 'LỄ VU QUY',
     name: 'Hồng Trinh',
+    name_title: 'Cô dâu',
     name_2: 'Thế Phương',
+    name_2_title: 'Chú rể',
+    introduce: {
+      left_side_title: 'Cô dâu',
+      left_side_name: 'Hồng Trinh',
+      left_side_avatar: '/images/bridal.png',
+      right_side_title: 'Chú rể',
+      right_side_name: 'Thế Phương',
+      right_side_avatar: '/images/groom.png',
+    },
     location_line_1: 'Nhà Hàng Tiệc Cưới',
     location_line_2: 'Minh Thuỳ',
     location_line_3: 'Sảnh B',
@@ -20,7 +30,17 @@ export const CONFIG = {
   groom: {
     title: 'LỄ TÂN HÔN',
     name: 'Thế Phương',
+    name_title: 'Chú rể',
     name_2: 'Hồng Trinh',
+    name_2_title: 'Cô dâu',
+    introduce: {
+      left_side_title: 'Cô dâu',
+      left_side_name: 'Hồng Trinh',
+      left_side_avatar: '/images/bridal.png',
+      right_side_title: 'Chú rể',
+      right_side_name: 'Thế Phương',
+      right_side_avatar: '/images/groom.png',
+    },
     location_line_1: 'Trường THCS Sông Hiến',
     location_line_2: 'Sân trường cấp 2',
     location_line_3: null,
