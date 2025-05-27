@@ -7,29 +7,30 @@ import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import { AnimatedGroup } from '@/components/motions'
 import { IconCalendar } from '@tabler/icons-react'
+import { CONFIG, SIDE } from '@/constants/data'
 
 dayjs.extend(duration)
 
 function InvitationEnvelope() {
-  const eventDay = Date.parse('2025-05-25T11:00:00')
+  const eventDay = Date.parse(CONFIG[SIDE].countdown)
   const [date, setDate] = useState<string | number>(0)
   const [hours, setHours] = useState<string | number>(0)
   const [minutes, setMinutes] = useState<string | number>(0)
   const [seconds, setSeconds] = useState<string | number>(0)
 
   const getGoogleCalendarUrl = () => {
-    return `https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NzdyNmlxOTN1MXNzbGgyNzQ5cmlwbGdhZDEgZmFtaWx5MTgzNTMzNzE1OTAyMDI4MDk0NDlAZw&tmsrc=family18353371590202809449%40group.calendar.google.com`
+    return CONFIG[SIDE].calendar_url
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const timeDuration: Record<string, { [key: string]: number }> | any = dayjs.duration(eventDay - Date.now())
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      const timeDuration: Record<string, { [key: string]: number }> | any = dayjs.duration(eventDay - Date.now()) // eslint-disable-line @typescript-eslint/no-explicit-any
       if (timeDuration) {
-        setDate(timeDuration['$d'].days)
-        setHours(timeDuration['$d'].hours > 9 ? timeDuration['$d'].hours : `0${timeDuration['$d'].hours}`)
-        setMinutes(timeDuration['$d'].minutes > 9 ? timeDuration['$d'].minutes : `0${timeDuration['$d'].minutes}`)
-        setSeconds(timeDuration['$d'].seconds > 9 ? timeDuration['$d'].seconds : `0${timeDuration['$d'].seconds}`)
+        setDate(timeDuration.$d.days)
+        setHours(timeDuration.$d.hours > 9 ? timeDuration.$d.hours : `0${timeDuration.$d.hours}`)
+        setMinutes(timeDuration.$d.minutes > 9 ? timeDuration.$d.minutes : `0${timeDuration.$d.minutes}`)
+        setSeconds(timeDuration.$d.seconds > 9 ? timeDuration.$d.seconds : `0${timeDuration.$d.seconds}`)
       }
     }, 1000)
     return () => clearInterval(interval)
@@ -52,26 +53,28 @@ function InvitationEnvelope() {
             Đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại
           </Text>
           <Title className="z-10" pos="relative" c="wedding-red.9" fw={400} fz={{ base: 36, sm: 68 }}>
-            Nhà Hàng Tiệc Cưới <br />
+            {CONFIG[SIDE].location_line_1} <br />
             <Text component="span" fw={400} fz={{ base: 48, sm: 68 }}>
-              Minh Thuỳ
+              {CONFIG[SIDE].location_line_2}
             </Text>
           </Title>
-          <Title c="gray.9" ta="center" fw={400} ff="var(--font-title)" fz={{ base: 24, sm: 36 }}>
-            Sảnh B
-          </Title>
+          {!!CONFIG[SIDE].location_line_3 && (
+            <Title c="gray.9" ta="center" fw={400} ff="var(--font-title)" fz={{ base: 24, sm: 36 }}>
+              {CONFIG[SIDE].location_line_3}
+            </Title>
+          )}
           <Text fw={500} fz={{ base: 16, sm: 24 }} c="gray.9">
-            01-02A Alexandre De Rhodes, Phường Bình Thọ, TP. Thủ Đức, TP. Hồ Chí Minh
+            {CONFIG[SIDE].address}
           </Text>
           <Text fw={500} fz={{ base: 16, sm: 24 }} c="gray.9">
             Vào lúc{' '}
             <Text component="span" c="wedding-red.9" fz={{ base: 16, sm: 24 }} fw={600}>
-              11h00, Chủ Nhật
+              {CONFIG[SIDE].time}
             </Text>
           </Text>
 
           <Text c="wedding-red.9" fw={400} ff="var(--font-title)" fz={{ base: 36, sm: 68 }}>
-            25-05-2025
+            {CONFIG[SIDE].date}
           </Text>
 
           <Flex justify="center">
