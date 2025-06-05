@@ -49,8 +49,7 @@ export const CONFIG = {
     date: '16-06-2025',
     date_lunar: '21-05',
     countdown: '2025-06-16T16:30:00',
-    calendar_url:
-      'https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NzdyNmlxOTN1MXNzbGgyNzQ5cmlwbGdhZDEgZmFtaWx5MTgzNTMzNzE1OTAyMDI4MDk0NDlAZw&tmsrc=family18353371590202809449%40group.calendar.google.com',
+    calendar_url: 'https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MG8zbjlndWhqMG11Zm1kcXAxZDdkMzdwcTMgcGh1b25ndGhlcGh1bmdAbQ&tmsrc=phuongthephung%40gmail.com',
     map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1015.5796450271912!2d106.23863630730398!3d22.67521783603088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36ca6685c0000001%3A0x4d035b7c00b2b825!2zVHLGsOG7nW5nIFRydW5nIEjhu41jIEPGoSBT4bufIFPDtG5nIEhp4bq_biAy!5e1!3m2!1sen!2s!4v1748312887751!5m2!1sen!2s',
     map_direction: 'https://www.google.com/maps/dir/?api=1&destination=Trường+Trung+Học+Cơ+Sở+Sông+Hiến+2',
   },
