@@ -1,7 +1,6 @@
-import { CONFIG, SIDE } from '@/constants/data'
 import { AspectRatio, Button, Container, Flex, Image, Stack, Text, Title } from '@mantine/core'
 import { IconHeartFilled, IconMapSearch } from '@tabler/icons-react'
-function Maps() {
+function Maps({ side }: { side: any }) {
   return (
     <Container h="100%" fluid>
       <Flex direction="column" ta="center" justify="center" align="center" h="100%">
@@ -11,11 +10,11 @@ function Maps() {
 
         <Flex direction="column" w="100%">
           <AspectRatio ratio={16 / 9} w="100%" h={{ base: 200, sm: 500 }}>
-            <iframe title="map" src={CONFIG[SIDE].map} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            <iframe title="map" src={side.map} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </AspectRatio>
 
           <Stack align="center" justify="center">
-            <Button component="a" href={CONFIG[SIDE].map_direction} size="lg" variant="filled" color="yellow.6" c="black" leftSection={<IconMapSearch />} target="_blank" mt={8}>
+            <Button component="a" href={side.map_direction} size="lg" variant="filled" color="yellow.6" c="black" leftSection={<IconMapSearch />} target="_blank" mt={8}>
               Tìm đường
             </Button>
             <Text c="wedding-red.9" ta="center" fw={500} className="text-shadow">

@@ -1,4 +1,3 @@
-export const SIDE = 'groom'
 export const CONFIG = {
   bridal: {
     title: 'LỄ VU QUY',

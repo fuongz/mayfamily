@@ -1,8 +1,11 @@
 import { InView } from '@/components/motions/in-view/InView'
-import { CONFIG, SIDE } from '@/constants/data'
+import { useData } from '@/hooks'
 import { Box, Flex, Image, Text, Title } from '@mantine/core'
 
-function Landing() {
+interface Props {
+  side: any
+}
+function Landing({ side }: Props) {
   return (
     <Flex justify="center" align="center" h="100%">
       <InView
@@ -18,25 +21,25 @@ function Landing() {
       >
         <Box ta="center">
           <Text c="wedding-red.9" ff="var(--font-title)" fz={{ base: 28, sm: 64 }} mb={8}>
-            {CONFIG[SIDE].title}
+            {side.title}
           </Text>
           <Title c="wedding-red.9" fw={400} fz={{ base: 56, sm: 72 }}>
-            {CONFIG[SIDE].name}
+            {side.name}
           </Title>
           <Title c="wedding-red.9" fw={400} fz={{ base: 48, sm: 72 }}>
             &
           </Title>
           <Title c="wedding-red.9" fw={400} fz={{ base: 56, sm: 72 }}>
-            {CONFIG[SIDE].name_2}
+            {side.name_2}
           </Title>
           <Flex justify="center" mt={16}>
             <Image alt="chu-hy-landing" src="/images/chu-hy.png" w={200} h={200} />
           </Flex>
           <Text c="wedding-red.9" ff="var(--font-title)" fz={{ base: 48, sm: 64 }}>
-            {CONFIG[SIDE].date}
+            {side.date}
           </Text>
           <Text c="wedding-red.9" ff="var(--font-title)" fz={{ base: 20, sm: 64 }}>
-            ({CONFIG[SIDE].date_lunar} ÂL)
+            ({side.date_lunar} ÂL)
           </Text>
         </Box>
       </InView>

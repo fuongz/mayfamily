@@ -1,8 +1,7 @@
 import { InView } from '@/components/motions/in-view/InView'
-import { CONFIG, SIDE } from '@/constants/data'
 import { Box, Flex, Grid, Image, Text, Title } from '@mantine/core'
 
-function Introduce() {
+function Introduce({ side }: { side: any }) {
   return (
     <Flex direction="column" pos="relative" h="100%" pt={16}>
       <Box pos="absolute" top={16} left={'50%'} style={{ transform: 'translateX(-50%)' }}>
@@ -25,10 +24,10 @@ function Introduce() {
             viewOptions={{ margin: '0px 0px -200px 0px' }}
           >
             <Text className="z-10" pos="relative" ta="left" c="wedding-red.9" ff="var(--font-title)" fz={{ base: 24, sm: 36 }} mb={8}>
-              {CONFIG[SIDE].introduce.left_side_title}
+              {side.introduce.left_side_title}
             </Text>
             <Title className="z-10" pos="relative" ta="left" c="wedding-red.9" fw={400} fz={{ base: 48, sm: 56 }}>
-              {CONFIG[SIDE].introduce.left_side_name}
+              {side.introduce.left_side_name}
             </Title>
           </InView>
         </Grid.Col>
@@ -48,10 +47,10 @@ function Introduce() {
             viewOptions={{ margin: '0px 0px -200px 0px' }}
           >
             <Text className="z-10" pos="relative" c="wedding-red.9" ta="right" ff="var(--font-title)" fz={{ base: 24, sm: 36 }} mb={8}>
-              {CONFIG[SIDE].introduce.right_side_title}
+              {side.introduce.right_side_title}
             </Text>
             <Title className="z-10" pos="relative" c="wedding-red.9" ta="right" fw={400} fz={{ base: 48, sm: 56 }}>
-              {CONFIG[SIDE].introduce.right_side_name}
+              {side.introduce.right_side_name}
             </Title>
           </InView>
         </Grid.Col>
@@ -71,7 +70,7 @@ function Introduce() {
           transition={{ duration: 0.5, ease: 'easeInOut' }}
           viewOptions={{ margin: '0px 0px -300px 0px' }}
         >
-          <Image alt={CONFIG[SIDE].introduce.left_side_title} src={CONFIG[SIDE].introduce.left_side_avatar} w={{ sm: 400, base: 200 }} h={{ sm: 800, base: 400 }} />
+          <Image alt={side.introduce.left_side_title} src={side.introduce.left_side_avatar} w={{ sm: 400, base: 200 }} h={{ sm: 800, base: 400 }} />
         </InView>
       </Box>
 
@@ -90,7 +89,7 @@ function Introduce() {
           transition={{ duration: 0.5, ease: 'easeInOut' }}
           viewOptions={{ margin: '0px 0px -300px 0px' }}
         >
-          <Image alt={CONFIG[SIDE].introduce.right_side_title} src={CONFIG[SIDE].introduce.right_side_avatar} w={{ sm: 400, base: 200 }} h={{ sm: 800, base: 400 }} />
+          <Image alt={side.introduce.right_side_title} src={side.introduce.right_side_avatar} w={{ sm: 400, base: 200 }} h={{ sm: 800, base: 400 }} />
         </InView>
       </Box>
     </Flex>

@@ -7,19 +7,18 @@ import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import { AnimatedGroup } from '@/components/motions'
 import { IconCalendar } from '@tabler/icons-react'
-import { CONFIG, SIDE } from '@/constants/data'
 
 dayjs.extend(duration)
 
-function InvitationEnvelope() {
-  const eventDay = Date.parse(CONFIG[SIDE].countdown)
+function InvitationEnvelope({ side }: { side: any }) {
+  const eventDay = Date.parse(side.countdown)
   const [date, setDate] = useState<string | number>(0)
   const [hours, setHours] = useState<string | number>(0)
   const [minutes, setMinutes] = useState<string | number>(0)
   const [seconds, setSeconds] = useState<string | number>(0)
 
   const getGoogleCalendarUrl = () => {
-    return CONFIG[SIDE].calendar_url
+    return side.calendar_url
   }
 
   useEffect(() => {
@@ -53,28 +52,28 @@ function InvitationEnvelope() {
             Đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại
           </Text>
           <Title className="z-10" pos="relative" c="wedding-red.9" fw={400} fz={{ base: 36, sm: 68 }}>
-            {CONFIG[SIDE].location_line_1} <br />
+            {side.location_line_1} <br />
             <Text component="span" fw={400} fz={{ base: 48, sm: 68 }}>
-              {CONFIG[SIDE].location_line_2}
+              {side.location_line_2}
             </Text>
           </Title>
-          {!!CONFIG[SIDE].location_line_3 && (
+          {!!side.location_line_3 && (
             <Title c="gray.9" ta="center" fw={400} ff="var(--font-title)" fz={{ base: 24, sm: 36 }}>
-              {CONFIG[SIDE].location_line_3}
+              {side.location_line_3}
             </Title>
           )}
           <Text fw={500} fz={{ base: 16, sm: 24 }} c="gray.9">
-            {CONFIG[SIDE].address}
+            {side.address}
           </Text>
           <Text fw={500} fz={{ base: 16, sm: 24 }} c="gray.9">
             Vào lúc{' '}
             <Text component="span" c="wedding-red.9" fz={{ base: 16, sm: 24 }} fw={600}>
-              {CONFIG[SIDE].time}
+              {side.time}
             </Text>
           </Text>
 
           <Text c="wedding-red.9" fw={400} ff="var(--font-title)" fz={{ base: 36, sm: 68 }}>
-            {CONFIG[SIDE].date}
+            {side.date}
           </Text>
 
           <Flex justify="center">

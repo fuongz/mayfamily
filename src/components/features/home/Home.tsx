@@ -5,11 +5,13 @@ import { Box, Image, Transition } from '@mantine/core'
 import { useMediaQuery, useMounted } from '@mantine/hooks'
 import { FullScreenScroll } from '@/components/animations'
 import { Gallery, Introduce, InvitationEnvelope, Landing, Maps, Quote } from '@/components/features/home'
+import { useData } from '@/hooks'
 
 function Home({ images }: { images: Array<{ file_url: string; filename: string; id: string }> }) {
   const mounted = useMounted()
   const container = useRef<HTMLDivElement | null>(null)
   const matches = useMediaQuery('(min-width: 56.25em)')
+  const { side } = useData()
   return (
     <div ref={container}>
       <Box>
@@ -32,12 +34,12 @@ function Home({ images }: { images: Array<{ file_url: string; filename: string; 
         </Transition>
 
         <FullScreenScroll>
-          <Landing />
+          {side && <Landing side={side} />}
           <Quote />
-          {!matches && <Introduce />}
+          {!matches && side && <Introduce side={side} />}
           <Gallery images={images} />
-          <InvitationEnvelope />
-          <Maps />
+          {side && <InvitationEnvelope side={side} />}
+          {side && <Maps side={side} />}
         </FullScreenScroll>
 
         <Transition mounted={mounted} transition="fade-up" duration={700} timingFunction="ease">
