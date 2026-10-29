@@ -1,10 +1,16 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "mayfamily",
-  "main": "@tanstack/react-start/server-entry",
-  "compatibility_date": "2026-10-01",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": true
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "prod-mayfamily",
+	"account_id": "4db494888d9a82bbe3df140e2e1a7676",
+	"main": "@tanstack/react-start/server-entry",
+	"compatibility_date": "2026-10-01",
+	"compatibility_flags": ["nodejs_compat"],
+	// Both hosts serve the site from this Worker.
+	"routes": [
+		{ "pattern": "trinhvaphuong.com", "custom_domain": true },
+		{ "pattern": "www.trinhvaphuong.com", "custom_domain": true }
+	],
+	"observability": {
+		"enabled": true
+	}
 }

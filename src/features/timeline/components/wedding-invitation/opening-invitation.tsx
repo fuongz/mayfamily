@@ -12,7 +12,7 @@ import { Crest } from "./crest"
 import { HeartQr } from "./heart-qr"
 
 /** Where the flap's QR leads: the site itself. */
-const SITE_URL = "https://www.trinhvaphuong.com/"
+const SITE_URL = "https://trinhvaphuong.com/"
 
 /** Strong ease-out for things arriving; ease-in-out for things moving on screen. */
 const EASE_OUT = [0.23, 1, 0.32, 1] as const
