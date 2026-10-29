@@ -7,11 +7,8 @@ import { EntryPage } from "@/features/timeline/components"
 
 export const Route = createFileRoute("/ky-niem/$slug")({
   loader: async ({ params: { slug } }) => {
-    const [entry, album] = await Promise.all([
-      getTimelineEntry({ data: { slug } }),
-      getAlbum({ data: { slug } }),
-    ])
-    return { entry, album }
+    const entry = await getTimelineEntry({ data: { slug } })
+    return { entry, album: getAlbum(slug) }
   },
   head: ({ loaderData }) => ({
     meta: loaderData

@@ -7,10 +7,12 @@ export interface HomeImage {
 export interface GalleryItem {
   type: "landscape" | "portrait"
   has_large_size: boolean
-  id: number
+  /** UUID for the shoot photos, a small number for in-repo ones. */
+  id: string | number
   file_url: string
   filename: string
-  folder: string
+  /** Shoot concept number, or the moment's slug for in-repo photos. */
+  folder: string | number
 }
 
 /** One family on the printed card: "Ông Bà" and the two parents. */
@@ -90,13 +92,15 @@ export interface TimelineEntry {
   /** CSS object-position for the cover's 3:2 crop, e.g. "50% 70%". Default centre. */
   coverFocus?: string
   /**
-   * Photos kept in the repo (under /public), shown before the CDN `album`
-   * photos on the detail page and in /thu-vien. Use for moments without a
-   * CDN album yet.
+   * Photos stored under /public, shown before the `album` photos on the
+   * detail page and in /thu-vien.
    */
   photos?: GalleryItem[]
-  /** CDN JSON path relative to VITE_CDN_URL, e.g. "gallery.json". Returns GalleryItem[]. */
-  album?: string
+  /**
+   * A shared photo list from constants/gallery.ts (images on the CDN). Entries
+   * sharing the same list show it once in /thu-vien.
+   */
+  album?: readonly GalleryItem[]
   /** Wedding entries carry the original invitation details. */
   invitation?: WeddingEvent
 }

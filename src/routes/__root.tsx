@@ -12,7 +12,6 @@ import { AudioPlayer } from "@/components/layout/audio-player"
 import { THEME_SCRIPT } from "@/components/layout/theme-toggle"
 import { buttonVariants } from "@/components/ui/button"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { env } from "@/config/env"
 import appCss from "../styles.css?url"
 
 export const Route = createRootRoute({
@@ -50,13 +49,6 @@ export const Route = createRootRoute({
         href: "/apple-touch-icon.png",
       },
       { rel: "manifest", href: "/site.webmanifest" },
-    ],
-    scripts: [
-      {
-        src: "https://cloud.umami.is/script.js",
-        defer: true,
-        "data-website-id": env.UMAMI_WEBSITE_ID,
-      },
     ],
   }),
   notFoundComponent: () => (

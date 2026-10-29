@@ -2,6 +2,7 @@ import type { TimelineEntry } from "@/types"
 
 import { EVENTS } from "./events"
 import { MAY } from "./family"
+import { WEDDING_GALLERY } from "./gallery"
 
 /** Timezone every timeline date is read in. */
 export const TIMELINE_TIMEZONE = "Asia/Ho_Chi_Minh"
@@ -10,7 +11,7 @@ export const TIMELINE_TIMEZONE = "Asia/Ho_Chi_Minh"
  * The family museum, in any order — `TIMELINE` below sorts it by date.
  *
  * To add a moment: copy an entry, give it a unique `slug` (used in
- * /ky-niem/<slug>), an ISO `date`, and optionally an `album` JSON on the CDN.
+ * /ky-niem/<slug>), an ISO `date`, and optionally `photos` or an `album`.
  */
 const ENTRIES: TimelineEntry[] = [
   {
@@ -48,7 +49,7 @@ const ENTRIES: TimelineEntry[] = [
     kind: "wedding",
     // Váy cưới giữa tường hoa hồng đỏ (concept 06).
     cover: "https://cdn.trinhvaphuong.com/concept-06/image-13.jpg",
-    album: "gallery.json",
+    album: WEDDING_GALLERY,
     invitation: EVENTS.bridal,
   },
   {
@@ -63,8 +64,8 @@ const ENTRIES: TimelineEntry[] = [
     kind: "wedding",
     // Nâng ly trên sân thượng lúc hoàng hôn (concept 02).
     cover: "https://cdn.trinhvaphuong.com/concept-02/image-12.jpg",
-    // TODO(Trinh & Phương): tách album riêng cho lễ tân hôn nếu có (vd. "tan-hon.json").
-    album: "gallery.json",
+    // TODO(Trinh & Phương): tách album riêng cho lễ tân hôn nếu có (thêm vào constants/gallery.ts).
+    album: WEDDING_GALLERY,
     invitation: EVENTS.groom,
   },
   {

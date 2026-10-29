@@ -5,9 +5,9 @@ import { getAlbums } from "@/features/gallery/api/get-album"
 import { AlbumSection, BackButton } from "@/features/gallery/components"
 
 export const Route = createFileRoute("/thu-vien/$slug")({
-  loader: async ({ params: { slug } }) => {
+  loader: ({ params: { slug } }) => {
     // Same list as the folders, so the album number matches its folder.
-    const albums = await getAlbums()
+    const albums = getAlbums()
     const index = albums.findIndex((album) => album.entry.slug === slug)
     if (index < 0) throw notFound()
     return { album: albums[index], index }
