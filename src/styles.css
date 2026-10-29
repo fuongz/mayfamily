@@ -1,0 +1,276 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Fonts — both families ship a Vietnamese subset (unicode-range split, so the
+   browser only downloads the subsets a page actually uses).
+   - Newsreader (variable: opsz, wght): headings and display titles. Optical
+     sizing gives a crisp text cut at small sizes and a fine, high-contrast
+     cut at display sizes, like a catalogue cover.
+   - Archivo (variable: wdth, wght): body copy, UI, and the narrow, tracked
+     uppercase captions of a museum label (`caption`). */
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/newsreader/opsz-italic.css";
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/archivo/wdth-italic.css";
+/* Handwriting for the guest's name on the invitation (Vietnamese subset included). */
+@import "@fontsource/dancing-script/500.css";
+
+/* Dark mode is a `.dark` class on <html>. A blocking inline script in the
+   document head (see THEME_SCRIPT in routes/__root.tsx) sets it before first
+   paint from the stored choice (localStorage "mayfamily:theme") or the OS
+   setting, so there is no flash; `dark:` utilities follow the class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Static tokens. `static` keeps the CSS vars emitted even if unused. */
+@theme static {
+  /* font-sans: body + UI · font-heading: section headings · font-title:
+     display titles (same serif, lighter and tighter at hero scale). */
+  --font-sans: "Archivo Variable", "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Newsreader Variable", "Newsreader", ui-serif, Georgia, serif;
+  --font-title: "Newsreader Variable", "Newsreader", ui-serif, Georgia, serif;
+
+  /* Long, soft deceleration used by every reveal and hover. */
+  --ease-album: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Theme-aware tokens: utilities read the CSS vars declared per scheme below. */
+@theme inline {
+  /* The one accent: a seal-ink red, used only for wedding
+     markers and the days-together number. `rule` is the hairline colour. */
+  --color-mark: var(--mark);
+  --color-mark-foreground: var(--mark-foreground);
+  --color-rule: var(--rule);
+  /* The printed invitation: off-white stock and olive ink. Paper is a
+     physical object, so it stays light in dark mode too. */
+  --color-paper: #fbfbf8;
+  --color-paper-shade: #ecebe4;
+  --color-ink: #4b4b2e;
+  /* Pink pen the guest's name is written in. */
+  --color-pen: #c0607a;
+  --font-hand: "Dancing Script", cursive;
+
+  /* shadcn semantic */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Light — a gallery wall: white, black type, grey hairlines. Pure neutrals
+   (chroma 0) so colour photos are the only colour besides the red mark. */
+:root {
+  color-scheme: light;
+
+  --mark: oklch(0.52 0.19 27);
+  --mark-foreground: oklch(0.99 0 0);
+  --rule: oklch(0.86 0 0);
+
+  --background: oklch(0.995 0 0);
+  --foreground: oklch(0.17 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.17 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.17 0 0);
+  --primary: oklch(0.17 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.965 0 0);
+  --secondary-foreground: oklch(0.17 0 0);
+  --muted: oklch(0.965 0 0);
+  --muted-foreground: oklch(0.47 0 0);
+  --accent: oklch(0.955 0 0);
+  --accent-foreground: oklch(0.17 0 0);
+  --destructive: oklch(0.55 0.21 27);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.86 0 0);
+  --ring: oklch(0.17 0 0);
+  --chart-1: oklch(0.17 0 0);
+  --chart-2: oklch(0.38 0 0);
+  --chart-3: oklch(0.56 0 0);
+  --chart-4: oklch(0.72 0 0);
+  --chart-5: oklch(0.86 0 0);
+  --radius: 0.125rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.17 0 0);
+  --sidebar-primary: oklch(0.17 0 0);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.955 0 0);
+  --sidebar-accent-foreground: oklch(0.17 0 0);
+  --sidebar-border: oklch(0.9 0 0);
+  --sidebar-ring: oklch(0.17 0 0);
+}
+
+/* Dark — the same rooms after hours: black wall, white type. The red is
+   lifted so it still reads on black. */
+:root.dark {
+  color-scheme: dark;
+
+  --mark: oklch(0.66 0.19 27);
+  --mark-foreground: oklch(0.14 0 0);
+  --rule: oklch(0.34 0 0);
+  --background: oklch(0.14 0 0);
+  --foreground: oklch(0.96 0 0);
+  --card: oklch(0.17 0 0);
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.17 0 0);
+  --popover-foreground: oklch(0.96 0 0);
+  --primary: oklch(0.96 0 0);
+  --primary-foreground: oklch(0.14 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.21 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.24 0 0);
+  --accent-foreground: oklch(0.96 0 0);
+  --destructive: oklch(0.7 0.18 25);
+  --border: oklch(0.28 0 0);
+  --input: oklch(0.34 0 0);
+  --ring: oklch(0.96 0 0);
+  --chart-1: oklch(0.96 0 0);
+  --chart-2: oklch(0.8 0 0);
+  --chart-3: oklch(0.64 0 0);
+  --chart-4: oklch(0.48 0 0);
+  --chart-5: oklch(0.34 0 0);
+  --sidebar: oklch(0.17 0 0);
+  --sidebar-foreground: oklch(0.96 0 0);
+  --sidebar-primary: oklch(0.96 0 0);
+  --sidebar-primary-foreground: oklch(0.14 0 0);
+  --sidebar-accent: oklch(0.24 0 0);
+  --sidebar-accent-foreground: oklch(0.96 0 0);
+  --sidebar-border: oklch(0.28 0 0);
+  --sidebar-ring: oklch(0.96 0 0);
+}
+
+/* Museum label: small, uppercase, tracked, slightly condensed sans. Colour is
+   muted by default; override with text-* where the label must lead. */
+@utility caption {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  font-weight: 500;
+  font-stretch: 87.5%;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-foreground);
+}
+
+/* Hairline rules: 1px in the rule colour. */
+@utility hairline {
+  border: 1px solid var(--rule);
+}
+@utility hairline-t {
+  border-top: 1px solid var(--rule);
+}
+
+/* A flat plate: an object hung on the wall. Card colour, hairline edge, no
+   shadow, square corners. */
+@utility plate {
+  background-color: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-optical-sizing: auto;
+  }
+  /* In-page anchors (e.g. "Lật từng trang") glide instead of jumping. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+    text-wrap: balance;
+  }
+  ::selection {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+}
+
+/* ---- Page transitions (router defaultViewTransition) ------------------
+   The old page fades out in place; the new one rises 12px as it fades in.
+   Short and ease-out so navigation still feels instant. */
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+::view-transition-old(root) {
+  animation: page-out 180ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+::view-transition-new(root) {
+  animation: page-in 320ms cubic-bezier(0.23, 1, 0.32, 1) 60ms both;
+}
+/* The corner controls are the same on every page: no cross-fade. */
+::view-transition-group(corner-controls) {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms;
+    animation-delay: 0s;
+  }
+}

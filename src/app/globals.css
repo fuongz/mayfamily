@@ -1,8 +1,0 @@
-@import 'tailwindcss';
-
-@utility fz-action-icon {
-  &[data-disabled] {
-    background-color: transparent !important;
-    @apply opacity-10;
-  }
-}
